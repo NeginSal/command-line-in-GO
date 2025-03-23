@@ -5,10 +5,21 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello,ninjas !")
-	fmt.Println(calculatePrice(1, 2, 3))
-}
+	age := 31
+	name := "negin"
 
-func calculatePrice(x, y, z int) int {
-	return x + y + z
+	// Print
+	fmt.Print("hello, ")
+	fmt.Print("world! \n")
+	fmt.Print("newline \n")
+
+	//Println
+	fmt.Println("hello ninjas!")
+	fmt.Println("goodbye ninjas!")
+	fmt.Println("my name is", name, "and my age is ", age)
+
+	//Printf(formatted strings)
+	fmt.Printf("my name is %v and my age is %v \n", name, age)
+	fmt.Printf("my name is %q and my age is %q \n", name, age)
+	fmt.Printf("age is type of %T", age)
 }
