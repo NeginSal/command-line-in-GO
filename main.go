@@ -5,21 +5,30 @@ import (
 )
 
 func main() {
-	age := 31
-	name := "negin"
+	// Arrays
+	var ages [3]int = [3]int{20, 30, 40}
+	var agesTwo [2]int = [2]int{50, 60}
 
-	// Print
-	fmt.Print("hello, ")
-	fmt.Print("world! \n")
-	fmt.Print("newline \n")
+	fmt.Println("ages=", ages, "length=", len(ages))
+	fmt.Println("agesTwo=", agesTwo, "length=", len(agesTwo))
 
-	//Println
-	fmt.Println("hello ninjas!")
-	fmt.Println("goodbye ninjas!")
-	fmt.Println("my name is", name, "and my age is ", age)
+	names := [4]string{"yoshi", "mario", "peach", "bowser"}
+	names[1] = "luigi"
+	fmt.Println("names", names, len(names))
 
-	//Printf(formatted strings)
-	fmt.Printf("my name is %v and my age is %v \n", name, age)
-	fmt.Printf("my name is %q and my age is %q \n", name, age)
-	fmt.Printf("age is type of %T", age)
+	// Slices
+	var scores = []int{100, 50, 60}
+	scores[2] = 25
+	fmt.Println("scores", scores)
+
+	scores = append(scores, 85)
+	fmt.Println("scores", scores)
+
+	// slice ranges
+	rangeOne := names[1:3]
+	rangeTwo := names[2:]
+	rangeThree := names[:3]
+
+	fmt.Println(rangeOne, rangeTwo, rangeThree)
+
 }
