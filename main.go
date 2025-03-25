@@ -5,30 +5,27 @@ import (
 )
 
 func main() {
-	// Arrays
-	var ages [3]int = [3]int{20, 30, 40}
-	var agesTwo [2]int = [2]int{50, 60}
+	// x := 0
+	// for x < 5 {
+	// 	fmt.Println("the value of x is :", x)
+	// 	x++
+	// }
 
-	fmt.Println("ages=", ages, "length=", len(ages))
-	fmt.Println("agesTwo=", agesTwo, "length=", len(agesTwo))
+	// for i := 0; i < 5; i++ {
+	// 	fmt.Println("value of x is:", i)
+	// }
 
-	names := [4]string{"yoshi", "mario", "peach", "bowser"}
-	names[1] = "luigi"
-	fmt.Println("names", names, len(names))
+	names := []string{"mario", "luigi", "peach", "yoshi"}
+	// for i := 0; i < len(names); i++ {
+	// 	fmt.Println(names[i])
+	// }
 
-	// Slices
-	var scores = []int{100, 50, 60}
-	scores[2] = 25
-	fmt.Println("scores", scores)
+	// for index, value := range names {
+	// 	fmt.Printf("the value at index %v is %v \n", index, value)
+	// }
 
-	scores = append(scores, 85)
-	fmt.Println("scores", scores)
-
-	// slice ranges
-	rangeOne := names[1:3]
-	rangeTwo := names[2:]
-	rangeThree := names[:3]
-
-	fmt.Println(rangeOne, rangeTwo, rangeThree)
+	for _,value := range names {
+		fmt.Printf("the value is  %v  \n",value)
+	}
 
 }
