@@ -2,22 +2,31 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
-func main() {
-	age := 45
+func sayGreeting(n string) {
+	fmt.Println("Good morning " + n)
+}
 
-	fmt.Println(age <= 50)
-	fmt.Println(age >= 50)
-	fmt.Println(age == 45)
-	fmt.Println(age != 45)
+func sayBye(n string) {
+	fmt.Printf("Goodbye %v \n", n)
+}
 
-	if age < 30 {
-		fmt.Println("age is less than 30")
-	} else if age < 40 {
-		fmt.Println("age is less than 40")
-	} else {
-		fmt.Println("age is not less than 40")
+func cycleNames(n []string, f func(string)) {
+	for _, v := range n {
+		f(v)
 	}
+}
 
+func circleArea(r float64) float64 {
+	return math.Pi * r * r
+}
+
+func main() {
+	sayGreeting("mario")
+	sayBye("luigi")
+	cycleNames([]string{"luigi", "mario", "crystal"}, sayGreeting)
+	a1 := circleArea(10)
+	fmt.Println("circle is ", a1)
 }
