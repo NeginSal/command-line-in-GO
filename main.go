@@ -2,31 +2,26 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"strings"
 )
 
-func sayGreeting(n string) {
-	fmt.Println("Good morning " + n)
-}
+func getInitials(n string) (string, string) {
+	s := strings.ToUpper(n)
+	names := strings.Split(s, " ")
 
-func sayBye(n string) {
-	fmt.Printf("Goodbye %v \n", n)
-}
-
-func cycleNames(n []string, f func(string)) {
-	for _, v := range n {
-		f(v)
+	var initials []string
+	for _, v := range names {
+		initials = append(initials, v[:1])
 	}
-}
+	if len(initials) > 1 {
+		return initials[0], initials[1]
+	}
 
-func circleArea(r float64) float64 {
-	return math.Pi * r * r
+	return initials[0], "_"
 }
 
 func main() {
-	sayGreeting("mario")
-	sayBye("luigi")
-	cycleNames([]string{"luigi", "mario", "crystal"}, sayGreeting)
-	a1 := circleArea(10)
-	fmt.Println("circle is ", a1)
+	fn, sn := getInitials("tifa lockhart")
+	fmt.Println(fn, sn)
+
 }
