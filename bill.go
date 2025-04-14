@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 type bill struct {
 	name  string
@@ -18,21 +21,26 @@ func newBill(name string) bill {
 	return b
 }
 
+// add item to bill
+func (b *bill) addItem(name string, price float64) {
+	b.items[name] = price
+}
+
 // format the bill
 func (b *bill) format() string {
-	fs := "Bill breakdown: \n"
+	fs := "Bill breakdown:\n"
 	var total float64 = 0
 
 	// list items
 	for k, v := range b.items {
-		fs += fmt.Sprintf("%-25v ...$%v \n", k+":", v)
+		fs += fmt.Sprintf("%-25v ...$%v\n", k+":", v)
 		total += v
 	}
 
 	// add tip
-	fs += fmt.Sprintf("%-25v ...$%0.2f \n", "tip:", b.tip)
+	fs += fmt.Sprintf("%-25v ...$%v\n", "tip:", b.tip)
 
-	// total
+	// add total
 	fs += fmt.Sprintf("%-25v ...$%0.2f", "total:", total+b.tip)
 
 	return fs
@@ -40,10 +48,16 @@ func (b *bill) format() string {
 
 // update tip
 func (b *bill) updateTip(tip float64) {
-	b.tip = tip
+	(*b).tip = tip
+	// b.tip = tip
 }
 
-// add an item to the bill
-func (b bill) addItem(name string, price float64) {
-	b.items[name] = price
+// save bill
+func (b *bill) save() {
+	data := []byte(b.format())
+	err := os.WriteFile("bills/"+b.name+".txt", data, 0644)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Bill saved to file")
 }
